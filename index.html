@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+
+    <!-- 
+      Fontawesome: Replace with your own kit. For more information, visit:
+        https://fontawesome.com/docs/web/
+    -->
+    <script src="https://kit.fontawesome.com/ebd7079609.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/main.css">
+  </head>
+  <body class="flex">
+    <nav>
+      <ul id="menu" class="flex">
+        <li id="branding"><a href="/">Navbar</a></li>
+        <li class="nav-item active-link"><a class="nav-item-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-item-link" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-item-link" href="#">Contact</a></li>
+        <li class="nav-item"><a class="nav-item-link" href="#">Sign Up</a></li>
+        <li id="menu-toggle">
+          <a href="#" aria-label="Menu Toggle">
+            <i class="fa fa-bars"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      
+    </main>
+    <footer>
+      
+    </footer>
+
+    <script type="text/javascript" src="static/js/navbar.js"></script>
+    <script>
+      const menu = document.getElementById("menu");
+      const toggle = document.getElementById("menu-toggle");
+
+      // Adds an event listener to the mobile menu's toggle button.
+      toggle.addEventListener(
+        "click",
+        function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMobileNav(menu, toggle);
+        }
+      );
+    </script>
+
+    <!-- Changes the active link in navbar based on scroll position. -->
+    <script>
+      let navLinks = document.querySelectorAll("nav ul li.nav-item a");
+      let mainSections = document.querySelectorAll("main section");
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        navLinks.forEach(link => {
+          let section = document.querySelector(link.hash);
+
+          if (section.offsetTop - 60 <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+            link.classList.add("active-link");
+          } else {
+            link.classList.remove("active-link");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
