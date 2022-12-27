@@ -18,10 +18,9 @@
     <nav>
       <ul id="menu" class="flex">
         <li id="branding"><a href="/">Navbar</a></li>
-        <li class="nav-item active-link"><a class="nav-item-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-item-link" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-item-link" href="#">Contact</a></li>
-        <li class="nav-item"><a class="nav-item-link" href="#">Sign Up</a></li>
+        <li class="nav-item"><a class="nav-item-link text-black" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-item-link text-black" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-item-link nav-btn-rounded bg-primary text-white" href="#signup">Sign Up</a></li>
         <li id="menu-toggle">
           <a href="#" aria-label="Menu Toggle">
             <i class="fa fa-bars"></i>
@@ -31,8 +30,20 @@
     </nav>
 
     <main>
-      
+      <section id="header">
+        <h1>Home Top</h1>
+      </section>
+      <section id="about">
+        <h1>About</h1>
+      </section>
+      <section id="contact">
+        <h1>Contact Us</h1>
+      </section>
+      <section id="signup">
+        <h1>Sign Up</h1>
+      </section>
     </main>
+
     <footer>
       
     </footer>
@@ -64,7 +75,7 @@
         navLinks.forEach(link => {
           let section = document.querySelector(link.hash);
 
-          if (section.offsetTop - 60 <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          if (checkSectionIsFocus(section, fromTop, 10)) {
             link.classList.add("active-link");
           } else {
             link.classList.remove("active-link");

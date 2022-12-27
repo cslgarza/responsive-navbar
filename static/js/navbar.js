@@ -38,3 +38,7 @@ function closeMobileNav(menu, toggle) {
   menu.classList.remove("active-mobile");
   toggle.querySelector("a").innerHTML = "<i class='fa fa-bars'></i>"
 }
+
+function checkSectionIsFocus(section, fromTop, offsetAdjustment) {
+  return section.offsetTop - offsetAdjustment <= fromTop && section.offsetTop + section.offsetHeight > fromTop
+}
