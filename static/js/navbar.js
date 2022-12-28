@@ -39,6 +39,33 @@ function closeMobileNav(menu, toggle) {
   toggle.querySelector("a").innerHTML = "<i class='fa fa-bars'></i>"
 }
 
+/**
+ * Adds a class to the navigation item link that is related to the currently focused
+ * section.
+ * @param {object} window The currently opened window in the browser.
+ * @param {Array} navLinks The navigation menu items.
+ */
+function toggleActiveLink(window, navLinks) {
+  let fromTop = window.scrollY;
+
+  navLinks.forEach(link => {
+    let section = document.querySelector(link.hash);
+
+    if (checkSectionIsFocus(section, fromTop, 10)) {
+      link.classList.add("active-link");
+    } else {
+      link.classList.remove("active-link");
+    }
+  });
+}
+
+/**
+ * Checks if the given section is in the viewport focus.
+ * 
+ * @param {object} section 
+ * @param {number} fromTop 
+ * @param {number} offsetAdjustment 
+ */
 function checkSectionIsFocus(section, fromTop, offsetAdjustment) {
   return section.offsetTop - offsetAdjustment <= fromTop && section.offsetTop + section.offsetHeight > fromTop
 }

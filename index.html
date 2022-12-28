@@ -66,21 +66,8 @@
 
     <!-- Changes the active link in navbar based on scroll position. -->
     <script>
-      let navLinks = document.querySelectorAll("nav ul li.nav-item a");
-      let mainSections = document.querySelectorAll("main section");
-
       window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        navLinks.forEach(link => {
-          let section = document.querySelector(link.hash);
-
-          if (checkSectionIsFocus(section, fromTop, 10)) {
-            link.classList.add("active-link");
-          } else {
-            link.classList.remove("active-link");
-          }
-        });
+        toggleActiveLink(window, document.querySelectorAll("nav ul li.nav-item a"));
       });
     </script>
   </body>
